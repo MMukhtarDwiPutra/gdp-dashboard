@@ -64,14 +64,14 @@ fig_1 = px.scatter(data,
                 #  title=f'Engagement dari {choice_1.title()} dan {choice_2.title()}'
                  )
 
-fig_2 = px.scatter(data, 
-                 x=data["KATEGORI"], 
-                 y=data["PRESENTER"], 
-                 size="SHARE", 
-                 hover_name="PRESENTER", 
-                 hover_data=["SHARE"],
-                #  title=f'Engagement dari {choice_1.title()} dan {choice_2.title()}'
-                 )
+# fig_2 = px.scatter(data, 
+#                  x=data["KATEGORI"], 
+#                  y=data["PRESENTER"], 
+#                  size="SHARE", 
+#                  hover_name="PRESENTER", 
+#                  hover_data=["SHARE"],
+#                 #  title=f'Engagement dari {choice_1.title()} dan {choice_2.title()}'
+#                  )
 
 st.plotly_chart(fig_1)
-st.plotly_chart(fig_2)
+# st.plotly_chart(fig_2)
