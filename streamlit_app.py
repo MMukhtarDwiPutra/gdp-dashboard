@@ -5,6 +5,7 @@ import streamlit as st
 import plotly.express as px
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score
 
 
 px.defaults.template = "plotly_dark"
@@ -100,6 +101,17 @@ model_kategori = RandomForestClassifier(random_state=42)
 model_presenter.fit(X_train, y_presenter_train)
 model_kategori.fit(X_train, y_kategori_train)
 
+# Predict on the full test set (to evaluate the model)
+kategori_pred = model_kategori.predict(X_test)
+presenter_pred = model_presenter.predict(X_test)
+
+# Calculate accuracy on the full test set
+accuracy_kategori = accuracy_score(y_kategori_test, kategori_pred)
+accuracy_presenter = accuracy_score(y_presenter_test, presenter_pred)
+
+st.header("Predict with Random Forest Classification")
+st.text(f"Akurasi kategori {accuracy_kategori * 100:.2f}% \t" f"Akurasi presenter {accuracy_presenter * 100:.2f}%")
+
 # Input form for time range
 time_range_input = st.text_input("Predict with time range (e.g., 17:58 - 18:06)")
 
@@ -119,7 +131,7 @@ if time_range_input:
     # Predict using the trained models
     presenter_pred = model_presenter.predict(input_data)
     kategori_pred = model_kategori.predict(input_data)
-    
+
     # Display the results
     st.write(f"Predicted Presenter: {presenter_pred[0]}")
     st.write(f"Predicted Kategori: {kategori_pred[0]}")
