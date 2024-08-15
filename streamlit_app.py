@@ -27,6 +27,9 @@ selected_categories = st.sidebar.multiselect(label="Kategori", options=categorie
 presenters = list(data["PRESENTER"].value_counts().keys().sort_values())
 selected_presenter = st.sidebar.multiselect(label="Presenter", options=presenters)
 
+programs = list(data["PROG"].value_counts().keys().sort_values())
+selected_programs = st.sidebar.multiselect(label="Program", options=programs)
+
 outputs_databar = data[(data["DATE"] >= start_date) &
                (data["DATE"] <= end_date)]
 
@@ -35,6 +38,9 @@ if selected_categories:
 
 if selected_presenter:
     outputs_databar = outputs_databar[outputs_databar['PRESENTER'].isin(selected_presenter)]
+
+if selected_programs:
+    outputs_databar = outputs_databar[outputs_databar['PROG'].isin(selected_programs)]
 
 avg_rating = outputs_databar["RATING"].mean()
 avg_share = outputs_databar["SHARE"].mean()
