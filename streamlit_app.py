@@ -101,7 +101,7 @@ model_presenter.fit(X_train, y_presenter_train)
 model_kategori.fit(X_train, y_kategori_train)
 
 # Input form for time range
-time_range_input = st.text_input("Enter time range (e.g., 17:58 - 18:06)")
+time_range_input = st.text_input("Predict with time range (e.g., 17:58 - 18:06)")
 
 if time_range_input:
     start_time, end_time = time_range_input.split(' - ')
