@@ -5,8 +5,13 @@ import streamlit as st
 import plotly.express as px
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import train_test_split, cross_val_score
+from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import Ridge, Lasso
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.ensemble import RandomForestRegressor
+from sklearn.svm import SVR
+from sklearn.neural_network import MLPRegressor
+from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.metrics import accuracy_score
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import mean_squared_error
@@ -20,21 +25,25 @@ px.defaults.color_continuous_scale = "reds"
 with open("data/used_data.pickle", "rb") as f:
     data = pickle.load(f)
 
+
+#Visualisasi dengan bar chart
+st.header(":video_camera: TRENDING TOP 10 TOPIC THIS WEEK")
+
 min_date = data["DATE"].min()
 max_date = data["DATE"].max()
-start_date, end_date = st.sidebar.date_input(label="Rentang Waktu", 
+start_date, end_date = st.date_input(label="Rentang Waktu", 
                                              min_value=min_date,
                                              max_value=max_date,
                                              value=[min_date, max_date])
 
 categories = list(data["KATEGORI"].value_counts().keys().sort_values())
-selected_categories = st.sidebar.multiselect(label="Kategori", options=categories)
+selected_categories = st.multiselect(label="Kategori", options=categories)
 
 presenters = list(data["PRESENTER"].value_counts().keys().sort_values())
-selected_presenter = st.sidebar.multiselect(label="Presenter", options=presenters)
+selected_presenter = st.multiselect(label="Presenter", options=presenters)
 
 programs = list(data["PROG"].value_counts().keys().sort_values())
-selected_programs = st.sidebar.multiselect(label="Program", options=programs)
+selected_programs = st.multiselect(label="Program", options=programs)
 
 outputs_databar = data[(data["DATE"] >= start_date) &
                (data["DATE"] <= end_date)]
@@ -51,8 +60,6 @@ if selected_programs:
 avg_rating = outputs_databar["RATING"].mean()
 avg_share = outputs_databar["SHARE"].mean()
 
-#Visualisasi dengan bar chart
-st.header(":video_camera: TOPIK")
 st.text(f"Average rating: {avg_rating:.2f}\t" f" Average share: {avg_share:.2f}")
 
 bar_data_1 = outputs_databar.groupby("CG TOPIK")["RATING"].sum().nlargest(10).sort_values(ascending=True)
@@ -67,7 +74,7 @@ st.plotly_chart(fig_2)
 #Visualisasi dengan scatter plot
 outputs_scatter = data[["KATEGORI", "PRESENTER"]]
 
-st.header(":bulb: Engagement")
+st.header(":bulb: Scatter Plot")
 col1, col2 = st.columns(2)
 # choice_1 = col1.selectbox('Horizontal', options=categories)
 # choice_2 = col2.selectbox('Vertical', options=presenters)
@@ -97,7 +104,7 @@ with open("data/used_data.pickle", "rb") as f:
 
 ###Predict by time
 # Prepare the feature set and target
-st.header("Use the best machine learning model : Decision Tree Regressor")
+st.header("Best machine learning model for predict: Decision Tree Regressor")
 st.text("Prediksi dengan feature 'START_MINUTES', 'END_MINUTES', 'KATEGORI', 'PRESENTER'")
 
 # Initialize LabelEncoder
@@ -147,7 +154,7 @@ st.text(f"r2 rating Score: {r2_score_rating :.2f}")
 st.text(f"rmse share Score: {rmse_share :.2f}")
 st.text(f"r2 share Score: {r2_score_share :.2f}")
 
-st.header("Use the best machine learning model : Random Forest Regressor")
+st.header("Best machine learning model for predict: Random Forest Regressor")
 st.text("Prediksi dengan feature 'DURASI', 'KATEGORI', 'PRESENTER'")
 
 # Initialize LabelEncoder
