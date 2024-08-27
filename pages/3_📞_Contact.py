@@ -24,8 +24,8 @@ contact_info = {
 
 with st.sidebar:
     st.page_link('streamlit_app.py', label='Introduction')
-    st.page_link('pages/2_⌨️_Projects.py', label='2 ⌨️ Projects')
-    st.page_link('pages/3_📞_Contact.py', label='3 📞 Contact')
+    st.page_link('pages/2_⌨️_Projects.py', label='⌨️ Projects')
+    st.page_link('pages/3_📞_Contact.py', label='📞 Contact')
 
 
 # Use three columns to layout the contact information
