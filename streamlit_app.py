@@ -8,7 +8,8 @@ def main():
     # builds the sidebar menu
     with st.sidebar:
         st.page_link('streamlit_app.py', label='Introduction')
-        st.page_link('pages/competition.py', label='Competition Checker')
+        st.page_link('pages/2_⌨️_Projects.py.py', label='2_⌨️_Projects.py.py')
+        st.page_link('pages/2_⌨️_Projects.py.py', label='2_⌨️_Projects.py.py')
 
     st.title(f'Introduction')
 
