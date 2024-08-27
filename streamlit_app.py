@@ -4,8 +4,8 @@ def main():
     # builds the sidebar menu
     with st.sidebar:
         st.page_link('streamlit_app.py', label='Introduction')
-        st.page_link('pages/2_⌨️_Projects.py.py', label='2_⌨️_Projects.py')
-        st.page_link('pages/3_📞_Contact.py', label='3_📞_Contact.py')
+        st.page_link('pages/2_⌨️_Projects.py', label='2 ⌨️ Projects')
+        st.page_link('pages/3_📞_Contact.py', label='3 📞 Contact')
 
     st.title(f'Introduction')
 
