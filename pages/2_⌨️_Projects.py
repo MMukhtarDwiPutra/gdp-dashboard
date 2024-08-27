@@ -20,6 +20,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 import plotly.tools as tls
 
+with st.sidebar:
+    st.page_link('streamlit_app.py', label='Introduction')
+    st.page_link('pages/2_⌨️_Projects.py', label='2 ⌨️ Projects')
+    st.page_link('pages/3_📞_Contact.py', label='3 📞 Contact')
+
 
 px.defaults.template = "plotly_dark"
 px.defaults.color_continuous_scale = "reds"
