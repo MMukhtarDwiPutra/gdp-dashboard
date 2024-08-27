@@ -20,6 +20,23 @@ import numpy as np
 import matplotlib.pyplot as plt
 import plotly.tools as tls
 
+st.markdown(
+    """
+    <style>
+    /* Change sidebar background color */
+    [data-testid="stSidebar"] {
+        background-color: #ADD8E6;
+    }
+
+    /* Optional: Adjust the text color in the sidebar */
+    [data-testid="stSidebar"] .css-1d391kg {
+        color: black;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+) 
+
 with st.sidebar:
     st.page_link('streamlit_app.py', label='Introduction')
     st.page_link('pages/2_⌨️_Projects.py', label='⌨️ Projects')
