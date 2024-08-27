@@ -1,16 +1,39 @@
 import streamlit as st
+from PIL import Image
 
-st.set_page_config(
-    page_title="Multipage App",
-    layout="wide",
-)
+st.title("Contact Us")
 
-st.sidebar.success("Select a page above")
+# Define the contact information
+contact_info = {
+    "Phone": {
+        "icon": "📞",
+        "text": "(+654) 6544 55",
+        "description": "Lorem ipsum dolor sit"
+    },
+    "Email": {
+        "icon": "✉️",
+        "text": "mail@ktchn.com",
+        "description": "Lorem ipsum dolor sit"
+    },
+    "Location": {
+        "icon": "📍",
+        "text": "London Eye, UK",
+        "description": "Lorem ipsum dolor sit"
+    }
+}
 
+# Use three columns to layout the contact information
+col1, col2, col3 = st.columns([1, 1, 1])
 
-st.image("data/metrotv.png", use_column_width=True)
+# Populate the columns with contact info
+with col1:
+    st.markdown(f"**{contact_info['Phone']['icon']} {contact_info['Phone']['text']}**")
+    st.write(contact_info['Phone']['description'])
 
-st.write("Memulai perjalanan penyiarannya dengan visi untuk menghadirkan berita yang cepat dan berkualitas. Kini, Metro TV dikenal sebagai kekuatan utama dalam media berita.")
+with col2:
+    st.markdown(f"**{contact_info['Email']['icon']} {contact_info['Email']['text']}**")
+    st.write(contact_info['Email']['description'])
 
-st.title("*ABOUT US*")
-st.write("Kami berfokus pada prediksi rating dan share program TV berdasarkan waktu tayang.")
+with col3:
+    st.markdown(f"**{contact_info['Location']['icon']} {contact_info['Location']['text']}**")
+    st.write(contact_info['Location']['description'])
