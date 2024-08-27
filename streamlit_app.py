@@ -1,9 +1,5 @@
 import streamlit as st
 
-st.set_page_config(
-    page_title="Multipage App",
-)
-
 def main():
     # builds the sidebar menu
     with st.sidebar:
