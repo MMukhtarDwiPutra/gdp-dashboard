@@ -6,27 +6,7 @@ def check_login(username, password):
         return True
     return False
 
-# if __name__ == '__main__':
-# Data pengguna contoh (dapat disimpan di database atau file terenkripsi)
-users = {"ceyy": "ceyy123"}
-
-# Jika belum login, tampilkan form login
-if 'logged_in' not in st.session_state:
-    st.session_state.logged_in = False
-
-if not st.session_state.logged_in:
-    st.title("Login")
-
-    username = st.text_input("Username")
-    password = st.text_input("Password", type="password")
-
-    if st.button("Login"):
-        if check_login(username, password):
-            st.session_state.logged_in = True
-            st.success("Login berhasil!")
-        else:
-            st.error("Username atau password salah")
-else:
+def page():
     if st.button("Logout"):
         st.session_state.logged_in = False
         
@@ -63,3 +43,26 @@ else:
         
         st.title("*ABOUT US*")
         st.write("Kami berfokus pada prediksi rating dan share program TV berdasarkan waktu tayang.")
+
+# if __name__ == '__main__':
+# Data pengguna contoh (dapat disimpan di database atau file terenkripsi)
+users = {"ceyy": "ceyy123"}
+
+# Jika belum login, tampilkan form login
+if 'logged_in' not in st.session_state:
+    st.session_state.logged_in = False
+
+if not st.session_state.logged_in:
+    st.title("Login")
+
+    username = st.text_input("Username")
+    password = st.text_input("Password", type="password")
+
+    if st.button("Login"):
+        if check_login(username, password):
+            st.session_state.logged_in = True
+            page()
+        else:
+            st.error("Username atau password salah")
+else:
+    page()
