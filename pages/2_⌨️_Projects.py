@@ -150,11 +150,12 @@ X_train_rating, X_test_rating, y_rating_train, y_rating_test = train_test_split(
 forest_model_rating = RandomForestRegressor(random_state=42)
 forest_model_share = RandomForestRegressor(random_state=42)
 
-scaler = StandardScaler()
-X_train_share_scaled = scaler.fit_transform(X_train_share)
-X_test_share_scaled = scaler.transform(X_test_share)
-X_train_rating_scaled = scaler.fit_transform(X_train_rating)
-X_test_rating_scaled = scaler.transform(X_test_rating)
+scaler_rating = StandardScaler()
+scaler_share = StandardScaler()
+X_train_share_scaled = scaler_share.fit_transform(X_train_share)
+X_test_share_scaled = scaler_share.transform(X_test_share)
+X_train_rating_scaled = scaler_rating.fit_transform(X_train_rating)
+X_test_rating_scaled = scaler_rating.transform(X_test_rating)
 
 # Train the models
 forest_model_rating.fit(X_train_rating_scaled, y_rating_train)
@@ -239,10 +240,11 @@ if time_range_input:
                 'PRESENTER_NUMBER': presenter_encoded,
             })
             
-            input_data = scaler.fit_transform(input_data)
+            input_data_rating = scaler_rating.fit_transform(input_data)
+            input_data_share = scaler_share.fit_transform(input_data)
             
-            predicted_rating = forest_model_rating.predict(input_data)
-            predicted_share = forest_model_share.predict(input_data)
+            predicted_rating = forest_model_rating.predict(input_data_rating)
+            predicted_share = forest_model_share.predict(input_data_share)
             
             arr_result.append([kategori, presenter, predicted_rating[0], predicted_share[0]])
 
