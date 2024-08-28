@@ -235,7 +235,7 @@ if time_range_input:
 
             input_data = pd.DataFrame({
                 'START_MINUTES': start_minutes,
-                'END_MINUTES': durasi,
+                'DURASI': durasi,
                 'KATEGORI_NUMBER': kategori_encoded,
                 'PRESENTER_NUMBER': presenter_encoded,
             })
