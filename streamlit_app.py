@@ -1,11 +1,6 @@
 import streamlit as st
 
 def main():
-    # builds the sidebar menu
-    if st.button("Logout"):
-        st.session_state.logged_in = False
-        st.experimental_rerun()
-        
     # Data pengguna contoh (dapat disimpan di database atau file terenkripsi)
     users = {"ceyy": "ceyy123"}
     
@@ -50,6 +45,9 @@ def main():
             unsafe_allow_html=True
         )    
         with st.sidebar:
+            if st.button("Logout"):
+                st.session_state.logged_in = False
+                st.experimental_rerun()
             st.page_link('streamlit_app.py', label='Introduction')
             st.page_link('pages/2_⌨️_Projects.py', label='⌨️ Projects')
             st.page_link('pages/3_📞_Contact.py', label='📞 Contact')
