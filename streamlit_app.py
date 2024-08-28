@@ -30,4 +30,4 @@ if __name__ == '__main__':
             else:
                 st.error("Username atau password salah")
     else:
-        main()
+        st.write('<meta http-equiv="refresh" content="0;url=/Introduction">', unsafe_allow_html=True)
