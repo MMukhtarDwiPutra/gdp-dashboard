@@ -43,6 +43,7 @@ if __name__ == '__main__':
     def check_login(username, password):
         st.text(username)
         st.text(password)
+        st.text(users)
         if username in users and users[username] == password:
             return True
         return False
