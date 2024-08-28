@@ -44,6 +44,7 @@ if __name__ == '__main__':
         st.text(username)
         st.text(password)
         st.text(users)
+        st.text(users[username])
         if username in users and users[username] == password:
             return True
         return False
