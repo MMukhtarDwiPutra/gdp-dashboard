@@ -2,6 +2,9 @@ import streamlit as st
 
 def main():
     # builds the sidebar menu
+    if st.button("Logout"):
+        st.session_state.logged_in = False
+        st.experimental_rerun()
     # Data pengguna contoh (dapat disimpan di database atau file terenkripsi)
     users = {"ceyy": "ceyy123"}
     
@@ -59,10 +62,6 @@ def main():
         
         st.title("*ABOUT US*")
         st.write("Kami berfokus pada prediksi rating dan share program TV berdasarkan waktu tayang.")
-
-        if st.button("Logout"):
-            st.session_state.logged_in = False
-            st.experimental_rerun()
 
 if __name__ == '__main__':
     main()
