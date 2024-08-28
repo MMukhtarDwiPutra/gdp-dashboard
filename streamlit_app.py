@@ -61,7 +61,7 @@ if not st.session_state.logged_in:
     if st.button("Login"):
         if check_login(username, password):
             st.session_state.logged_in = True
-            st.experimental_rerun() 
+            st.experimental_set_query_params() 
         else:
             st.error("Username atau password salah")
 else:
