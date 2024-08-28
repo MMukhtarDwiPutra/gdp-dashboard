@@ -25,8 +25,8 @@ if not st.session_state.logged_in:
             st.session_state.logged_in = True
             st.success("Login berhasil!")
 
-            st.write('<meta http-equiv="refresh" content="0;url=/1_📍_Introduction">', unsafe_allow_html=True)
+            st.write('<meta http-equiv="refresh" content="0;url=/1_📍_Introduction.py">', unsafe_allow_html=True)
         else:
             st.error("Username atau password salah")
 else:
-    st.write('<meta http-equiv="refresh" content="0;url=/1_📍_Introduction">', unsafe_allow_html=True)
+    st.write('<meta http-equiv="refresh" content="0;url=/1_📍_Introduction.py">', unsafe_allow_html=True)
