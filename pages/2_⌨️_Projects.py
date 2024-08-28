@@ -20,6 +20,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 import plotly.tools as tls
 
+if st.button("Logout"):
+    st.session_state.logged_in = False
+    st.experimental_rerun()
+
 st.markdown(
     """
     <style>
