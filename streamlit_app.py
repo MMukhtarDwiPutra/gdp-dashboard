@@ -41,6 +41,8 @@ if __name__ == '__main__':
     
     # Fungsi untuk mengecek login
     def check_login(username, password):
+        st.text(username)
+        st.text(password)
         if username in users and users[username] == password:
             return True
         return False
