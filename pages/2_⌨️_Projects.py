@@ -240,8 +240,8 @@ if time_range_input:
                 'PRESENTER_NUMBER': presenter_encoded,
             })
             
-            input_data_rating = scaler_rating.fit_transform(input_data)
-            input_data_share = scaler_share.fit_transform(input_data)
+            input_data_rating = scaler_rating.transform(input_data)
+            input_data_share = scaler_share.transform(input_data)
             
             predicted_rating = forest_model_rating.predict(input_data_rating)
             predicted_share = forest_model_share.predict(input_data_share)
