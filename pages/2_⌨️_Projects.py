@@ -227,7 +227,7 @@ if time_range_input:
     arr_result = []
     scaler = StandardScaler()
 
-    st.header("Prediksi dengan feature 'START_MINUTES', 'END_MINUTES', 'KATEGORI', 'PRESENTER'")
+    st.header("Prediksi dengan feature 'START_MINUTES', 'DURASI', 'KATEGORI', 'PRESENTER'")
     for presenter in unique_presenter:
         for kategori in unique_kategori:
             kategori_encoded = label_encoder_kategori.transform([kategori])
