@@ -61,7 +61,6 @@ if __name__ == '__main__':
             if check_login(username, password):
                 st.session_state.logged_in = True
                 st.success("Login berhasil!")
+                main()
             else:
                 st.error("Username atau password salah")
-
-    main()
