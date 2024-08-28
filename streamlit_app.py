@@ -9,6 +9,7 @@ def check_login(username, password):
 def page():
     if st.button("Logout"):
         st.session_state.logged_in = False
+        st.experimental_set_query_params() 
         
     if not st.session_state.logged_in:
         st.write('<meta http-equiv="refresh" content="0;url=/">', unsafe_allow_html=True)
