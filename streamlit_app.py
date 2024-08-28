@@ -63,5 +63,4 @@ if __name__ == '__main__':
             else:
                 st.error("Username atau password salah")
     else:
-        st.session_state.logged_in:
         main()
