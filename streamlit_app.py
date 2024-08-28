@@ -35,4 +35,31 @@ def main():
     st.write("Kami berfokus pada prediksi rating dan share program TV berdasarkan waktu tayang.")
 
 if __name__ == '__main__':
-    main()
+    # Data pengguna contoh (dapat disimpan di database atau file terenkripsi)
+users = {"admin": "password123", "user": "mypassword"}
+
+# Fungsi untuk mengecek login
+def check_login(username, password):
+    if username in users and users[username] == password:
+        return True
+    return False
+
+# Jika belum login, tampilkan form login
+if 'logged_in' not in st.session_state:
+    st.session_state.logged_in = False
+
+if not st.session_state.logged_in:
+    st.title("Login")
+
+    username = st.text_input("Username")
+    password = st.text_input("Password", type="password")
+
+    if st.button("Login"):
+        if check_login(username, password):
+            st.session_state.logged_in = True
+            st.success("Login berhasil!")
+        else:
+            st.error("Username atau password salah")
+
+    if st.session_state.logged_in:
+        main()
