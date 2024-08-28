@@ -9,7 +9,6 @@ def check_login(username, password):
 def page():
     if st.button("Logout"):
         st.session_state.logged_in = False
-        st.experimental_set_query_params() 
         
     if not st.session_state.logged_in:
         st.write('<meta http-equiv="refresh" content="0;url=/">', unsafe_allow_html=True)
@@ -62,8 +61,7 @@ if not st.session_state.logged_in:
     if st.button("Login"):
         if check_login(username, password):
             st.session_state.logged_in = True
-            st.experimental_set_query_params()  # Trigger a re-run by updating session state (This is pseudo since `experimental_rerun` is unavailable)
-            st.experimental_rerun() # Trigger a re-run manually
+            st.rerun() # Trigger a re-run manually
         else:
             st.error("Username atau password salah")
 else:
