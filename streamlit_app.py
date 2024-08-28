@@ -27,6 +27,9 @@ if not st.session_state.logged_in:
         else:
             st.error("Username atau password salah")
 else:
+    if st.button("Logout"):
+        st.session_state.logged_in = False
+        
     st.markdown(
         """
         <style>
