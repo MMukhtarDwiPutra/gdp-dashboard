@@ -19,14 +19,13 @@ from sklearn.preprocessing import StandardScaler
 import numpy as np
 import matplotlib.pyplot as plt
 import plotly.tools as tls
-
-if st.button("Logout"):
-    st.session_state.logged_in = False
-    st.experimental_rerun()
     
 if not st.session_state.logged_in:
     st.write('<meta http-equiv="refresh" content="0;url=/">', unsafe_allow_html=True)
 else:
+    if st.button("Logout"):
+        st.session_state.logged_in = False
+        
     st.markdown(
         """
         <style>
