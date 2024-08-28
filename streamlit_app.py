@@ -37,7 +37,7 @@ def main():
 if __name__ == '__main__':
     
     # Data pengguna contoh (dapat disimpan di database atau file terenkripsi)
-    users = {"admin": "password123", "user": "mypassword"}
+    users = {"admin": "ceyy", "user": "ceyy123"}
     
     # Fungsi untuk mengecek login
     def check_login(username, password):
