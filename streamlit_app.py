@@ -2,9 +2,22 @@ import streamlit as st
 
 def main():
     # builds the sidebar menu
+    # Use HTML and CSS to position the button to the right
+    st.markdown("""
+        <style>
+        .logout-button {
+            display: flex;
+            justify-content: flex-end;
+        }
+        </style>
+        <div class="logout-button">
+            <button onclick="window.location.href='/logout'">Logout</button>
+        </div>
+    """, unsafe_allow_html=True)
     if st.button("Logout"):
         st.session_state.logged_in = False
         st.experimental_rerun()
+        
     # Data pengguna contoh (dapat disimpan di database atau file terenkripsi)
     users = {"ceyy": "ceyy123"}
     
