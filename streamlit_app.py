@@ -62,7 +62,8 @@ if not st.session_state.logged_in:
     if st.button("Login"):
         if check_login(username, password):
             st.session_state.logged_in = True
-            st.experimental_set_query_params() 
+            st.experimental_set_query_params()  # Trigger a re-run by updating session state (This is pseudo since `experimental_rerun` is unavailable)
+            st.experimental_rerun() # Trigger a re-run manually
         else:
             st.error("Username atau password salah")
 else:
