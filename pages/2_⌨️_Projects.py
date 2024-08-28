@@ -129,7 +129,7 @@ with open("data/used_data.pickle", "rb") as f:
 ###Predict by time
 # Prepare the feature set and target
 st.header("Best machine learning model for predict: Random Forest Regressor")
-st.text("Prediksi dengan feature 'START_MINUTES', 'END_MINUTES', 'KATEGORI', 'PRESENTER'")
+st.text("Prediksi dengan feature 'START_MINUTES', 'DURASI', 'KATEGORI', 'PRESENTER'")
 
 # Initialize LabelEncoder
 label_encoder_kategori = LabelEncoder()
@@ -139,7 +139,7 @@ label_encoder_presenter = LabelEncoder()
 df['KATEGORI_NUMBER'] = label_encoder_kategori.fit_transform(df['KATEGORI'])
 df['PRESENTER_NUMBER'] = label_encoder_presenter.fit_transform(df['PRESENTER'])
 
-X = df[['START_MINUTES', 'END_MINUTES', 'KATEGORI_NUMBER', 'PRESENTER_NUMBER']]
+X = df[['START_MINUTES', 'DURASI', 'KATEGORI_NUMBER', 'PRESENTER_NUMBER']]
 y_share = df['SHARE']  # Target 1
 y_rating = df['RATING']    # Target 2
 
@@ -218,7 +218,7 @@ if time_range_input:
     start_time, end_time = time_range_input.split(' - ')
     start_minutes = int(pd.to_datetime(start_time, format='%H:%M').hour * 60 + pd.to_datetime(start_time, format='%H:%M').minute)
     end_minutes = int(pd.to_datetime(end_time, format='%H:%M').hour * 60 + pd.to_datetime(end_time, format='%H:%M').minute)
-    duration = (pd.to_datetime(end_time, format='%H:%M') - pd.to_datetime(start_time, format='%H:%M')).seconds / 60
+    durasi = (pd.to_datetime(end_time, format='%H:%M') - pd.to_datetime(start_time, format='%H:%M')).seconds / 60
 
     search_df = df[(df["START_MINUTES"] >= start_minutes) & (df["START_MINUTES"] <= end_minutes)]
     unique_presenter = search_df['PRESENTER'].unique()
@@ -234,8 +234,8 @@ if time_range_input:
             presenter_encoded = label_encoder_presenter.transform([presenter])
 
             input_data = pd.DataFrame({
-                'START_MINUTES': [start_minutes],
-                'END_MINUTES': [end_minutes],
+                'START_MINUTES': start_minutes,
+                'END_MINUTES': durasi,
                 'KATEGORI_NUMBER': kategori_encoded,
                 'PRESENTER_NUMBER': presenter_encoded,
             })
