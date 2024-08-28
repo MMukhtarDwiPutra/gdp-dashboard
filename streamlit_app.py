@@ -37,14 +37,10 @@ def main():
 if __name__ == '__main__':
     
     # Data pengguna contoh (dapat disimpan di database atau file terenkripsi)
-    users = {"admin": "ceyy", "user": "ceyy123"}
+    users = {"ceyy": "ceyy123"}
     
     # Fungsi untuk mengecek login
     def check_login(username, password):
-        st.text(username)
-        st.text(password)
-        st.text(users)
-        st.text(users[username])
         if username in users and users[username] == password:
             return True
         return False
