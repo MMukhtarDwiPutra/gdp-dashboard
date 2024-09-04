@@ -46,7 +46,7 @@ else:
     with st.sidebar:
         st.page_link('streamlit_app.py', label='Introduction')
         st.page_link('pages/2_⌨️_Projects.py', label='⌨️ Projects')
-        st.page_link('pages/4_⌗_Data.py', label='Data')
+        st.page_link('pages/4_⌗_Data.py', label='⌗ Data')
         st.page_link('pages/3_📞_Contact.py', label='📞 Contact')
     
     
